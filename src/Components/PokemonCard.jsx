@@ -4,14 +4,14 @@ import { useNavigate } from "react-router-dom";
 
 const PokemonCard = ({ PokemonCard }) => {
 
-    // const navigate=useNavigate();
-    // const navigateTo = (id) => {
-    //     navigate('/pokemon/'+id);
-    // }
+    const navigate=useNavigate();
+    const navigateTo = (id) => {
+        navigate('/pokemon/'+id);
+    }
 
 
     return (
-
+        <div className="pokecard" onClick={() => {navigateTo(PokemonCard.name)}}>
         <Card style={{ width: '18rem' }}>
           <Card.Img variant="top" src={"https://img.pokemondb.net/artwork/" + PokemonCard.name +".jpg"} />
           <Card.Body>
@@ -22,6 +22,7 @@ const PokemonCard = ({ PokemonCard }) => {
             <Button variant="primary">Voir détails</Button>
           </Card.Body>
         </Card>
+        </div>
       );
 }
 

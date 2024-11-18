@@ -12,7 +12,7 @@ const HomePage = () => {
             const res = response.data.results;
 
             setPokemon(res);
-            console.log(res)
+            console.log(res);
 
         } catch (error) {
             console.error(error);
@@ -25,12 +25,13 @@ useEffect(() => {
 
   return <>
    
-      <h1>TEst</h1>
+      <h1>Pokemons</h1>
       <div className="d-flex justify-content-center flex-wrap gap-3 mt-3">
             {pokemon.map((pokemon) => {
                 return <PokemonCard PokemonCard={pokemon} key={pokemon.id}></PokemonCard>
 
             })}
+            
 
         </div>
       </>

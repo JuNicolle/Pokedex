@@ -10,7 +10,7 @@ const NavBar = () => {
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="me-auto">
-                <Link to={"/"} href="#action1">Pokémons</Link>
+                <Link to={"/pokemon"} href="#action1">Pokémons</Link>
                 <Link to={"/generations"} href="#action1">Générations</Link>
               </Nav>
             </Navbar.Collapse>

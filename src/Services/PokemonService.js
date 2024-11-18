@@ -4,4 +4,12 @@ function getAllPokemons() {
   return axios.get('https://pokeapi.co/api/v2/pokemon');
 }
 
-export default {getAllPokemons};
+function getPokemonById(id) {
+  return axios.get('https://pokeapi.co/api/v2/pokemon/' + id);
+}
+
+function getPokemonDetails(id){
+  return axios.get('https://pokeapi.co/api/v2/pokemon-species/' + id);
+}
+
+export default {getAllPokemons, getPokemonById, getPokemonDetails};
