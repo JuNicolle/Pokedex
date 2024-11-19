@@ -108,10 +108,10 @@ const PokemonDetailPage = () => {
 
             <div className="pokemonGameVersion">
                 <h2>Game Versions</h2>
-                <ul>
+                <ul className="gameVersion">
                     {pokemon.game_indices &&
                         pokemon.game_indices.map((game, index) => (
-                            <div key={index}>
+                            <div key={index} > 
                              <button>{game.version.name}</button>
                             </div>
                         ))}

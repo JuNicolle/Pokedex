@@ -1,7 +1,8 @@
 import axios from 'axios';
 
-function getAllPokemons() {
-  return axios.get('https://pokeapi.co/api/v2/pokemon');
+function getAllPokemons(currentPage, limit = 20) {
+  const offset = (currentPage - 1) * limit;
+  return axios.get(`https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=${limit}`);
 }
 
 function getPokemonById(id) {

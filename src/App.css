@@ -19,9 +19,7 @@
 
 #bodyDetail{
   display: flex;
-  width: 100%;
-  flex-basis: 70%;
-  justify-content: space-between;
+  gap: 10vw;
   font-family: Arial, Helvetica, sans-serif;
   background-color:lightblue;
 }
@@ -35,6 +33,14 @@
   margin-left: 3vw;
 }
 
+.rightPart{
+  display: flex;
+  flex-direction: column;
+  padding-top: 9vh;
+  gap:3vh;
+  margin-right: 3vw;
+}
+
 #bodyDetail h2{
   color:goldenrod;
 }
@@ -42,12 +48,10 @@
   color:royalblue;
 }
 
-.pokemonGameVersion{
-  display: flex;
-  flex-direction: column;
-}
 
-.pokemonGameVersion ul{
+
+.gameVersion{
   display: flex;
+  gap: 1vw;
   flex-wrap: wrap;
 }
