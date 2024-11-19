@@ -18,8 +18,15 @@ const HomePage = () => {
 
             setPokemon(res);
             setMaxPage(100);
+            setTimeout(() => {
+                window.scrollTo({
+                    top: 0,
+                    left: 0,
+                    behavior: "instant",
+                });
+            }, 50)
 
-            console.log(res);
+           
 
         } catch (error) {
             console.error(error);
@@ -30,7 +37,7 @@ const HomePage = () => {
         fetchPokemons();
     }, [currentPage]);
 
-
+    
 
     return <>
 

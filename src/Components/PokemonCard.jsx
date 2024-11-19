@@ -10,12 +10,13 @@ const PokemonCard = ({ PokemonCard }) => {
     }
 
 
+
     return (
         <div className="pokecard" onClick={() => {navigateTo(PokemonCard.name)}}>
         <Card style={{ width: '18rem' }}>
           <Card.Img variant="top" src={"https://img.pokemondb.net/artwork/" + PokemonCard.name +".jpg"} />
           <Card.Body>
-            <Card.Title>{PokemonCard.name}</Card.Title>
+            <Card.Title className="titlePoke">{PokemonCard.name}</Card.Title>
             <Card.Text>
               
             </Card.Text>

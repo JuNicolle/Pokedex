@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom"
 import PokemonService from "../Services/PokemonService";
-import PokemonCard from "../Components/PokemonCard";
-import { Container } from "react-bootstrap";
 
 
 
@@ -41,6 +39,9 @@ const PokemonDetailPage = () => {
         fetchPokemonById(), fetchDetailsPokemon();
     },[]);
 
+    
+    
+
 
     return <>
     
@@ -56,22 +57,22 @@ const PokemonDetailPage = () => {
                 {weakness.damage_relations?.double_damage_from && (
         <li>
             <strong>Double damage from:</strong>
-            <ul>
+            
                 {weakness.damage_relations.double_damage_from.map((relation, index) => (
-                    <li key={index}>{relation.name}</li>
+                    <button className={relation.name}>{relation.name}</button>
                 ))}
-            </ul>
+            
         </li>
     )}
     
     {weakness.damage_relations?.double_damage_to && (
         <li>
             <strong>Double damage to:</strong>
-            <ul>
+            
                 {weakness.damage_relations.double_damage_to.map((relation, index) => (
-                    <li key={index}>{relation.name}</li>
+                    <button className={relation.name}>{relation.name}</button>
                 ))}
-            </ul>
+            
         </li>
     )}
 </ul>
@@ -82,7 +83,7 @@ const PokemonDetailPage = () => {
                 <h2>Types</h2>
             <ul>
                 {pokemon.types && pokemon.types.map((type, index) => {
-                    return <button><div key={index}>{type.type.name}</div></button>
+                    return <button className={type.type.name}>{type.type.name}</button>
                 })}   
             </ul>
             </div>
