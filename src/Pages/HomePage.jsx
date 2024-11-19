@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import PokemonCard from '../Components/PokemonCard';
 import PokemonService from '../Services/PokemonService';
+import ReactPaginate from 'react-paginate';
 
 const HomePage = () => {
 
     const [pokemon, setPokemon] = useState([]);
+
+
 
     const fetchPokemons = async () => {
         try {
@@ -12,6 +15,7 @@ const HomePage = () => {
             const res = response.data.results;
 
             setPokemon(res);
+           
             console.log(res);
 
         } catch (error) {
@@ -23,6 +27,8 @@ useEffect(() => {
     fetchPokemons();
 },[]);
 
+
+
   return <>
    
       <h1>Pokemons</h1>
@@ -31,10 +37,9 @@ useEffect(() => {
                 return <PokemonCard PokemonCard={pokemon} key={pokemon.id}></PokemonCard>
 
             })}
-            
-
         </div>
-      </>
+          
+    </>
 }
 
 export default HomePage;

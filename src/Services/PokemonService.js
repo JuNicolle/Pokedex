@@ -12,4 +12,8 @@ function getPokemonDetails(id){
   return axios.get('https://pokeapi.co/api/v2/pokemon-species/' + id);
 }
 
-export default {getAllPokemons, getPokemonById, getPokemonDetails};
+function getPokemonWeakness(id){
+  return axios.get('https://pokeapi.co/api/v2/type/'+id);
+}
+
+export default {getAllPokemons, getPokemonById, getPokemonDetails, getPokemonWeakness};
