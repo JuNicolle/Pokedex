@@ -13,11 +13,8 @@ class GraphicStat extends Component {
 
         const options = {
             animationEnabled: true,
-            exportEnabled: true,
-            theme: "dark2",
-            title: {
-                text: pokemon?.name || "Pokémon"
-            },
+            theme: "light2",
+            
             data: [{
                 type: "pie",
                 indexLabel: "{label}: {y}",
@@ -28,7 +25,7 @@ class GraphicStat extends Component {
 
         return (
             <div>
-                <CanvasJSChart options={options} />
+                <CanvasJSChart options={options}/>
             </div>
         );
     }

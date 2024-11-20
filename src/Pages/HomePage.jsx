@@ -2,12 +2,21 @@ import React, { useEffect, useState } from 'react';
 import PokemonCard from '../Components/PokemonCard';
 import PokemonService from '../Services/PokemonService';
 import { Container, Pagination } from 'react-bootstrap';
+import Form from 'react-bootstrap/Form';
+
+
 
 const HomePage = () => {
 
     const [pokemon, setPokemon] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
-    const [maxPage, setMaxPage] = useState(100);
+    const [maxPage, setMaxPage] = useState(20);
+    const [searchValue, setSearchValue] = useState("");
+    const [filteredPokemons, setFilteredPokemons] = useState([]);
+
+    const handleChange= (event) => {
+        setSearchValue(event.currentTarget.value);;
+    }
 
 
 
@@ -17,7 +26,8 @@ const HomePage = () => {
             const res = response.data.results;
 
             setPokemon(res);
-            setMaxPage(100);
+            setFilteredPokemons(res);
+            setMaxPage(20);
             setTimeout(() => {
                 window.scrollTo({
                     top: 0,
@@ -37,16 +47,31 @@ const HomePage = () => {
         fetchPokemons();
     }, [currentPage]);
 
+    useEffect(() => {
+        setFilteredPokemons(pokemon.filter((pokemon) => {
+            return pokemon.name.toLowerCase().includes(searchValue.toLowerCase());
+        }));
+    },[searchValue]);
     
 
     return <>
-
-        <h1>Pokemons</h1>
+        <div id='bodyHomePage'>
+            <div className='searchDiv'>
+                <div className="searchForm">
+                <Form.Control type="text" placeholder="Catch one !" value={searchValue} onChange={handleChange}/>    
+                </div>
+            </div>
+        
         <div className="d-flex justify-content-center flex-wrap gap-3 mt-3">
+            {filteredPokemons.map((pokemon)=>
+            (<PokemonCard PokemonCard={pokemon} key={pokemon.id}/>))}
+        </div>
+
+        {/* <div className="d-flex justify-content-center flex-wrap gap-3 mt-3">
             {pokemon.map((pokemon) => {
                 return <PokemonCard PokemonCard={pokemon} key={pokemon.id}></PokemonCard>
             })}
-        </div>
+        </div> */}
 
         <Container className='d-flex justify-content-center mb-3'>
             <Pagination className="mt-5">
@@ -83,7 +108,7 @@ const HomePage = () => {
 
             </Pagination>
         </Container>
-
+        </div>
     </>
 }
 

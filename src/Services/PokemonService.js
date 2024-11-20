@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-function getAllPokemons(currentPage, limit = 20) {
+function getAllPokemons(currentPage, limit = 80) {
   const offset = (currentPage - 1) * limit;
   return axios.get(`https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=${limit}`);
 }
