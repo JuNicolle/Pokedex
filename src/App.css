@@ -297,6 +297,10 @@ a{
   border-radius: 20px;
 }
 
+.type-default {
+  background-color: #f0f0f0; /* Couleur neutre */
+}
+
 #navbar{
   width: 100%;
 }
