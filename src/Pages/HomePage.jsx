@@ -3,6 +3,8 @@ import PokemonCard from '../Components/PokemonCard';
 import PokemonService from '../Services/PokemonService';
 import { Container, Pagination } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
+import PaginationPoke from '../Components/PaginationPoke';
+
 
 
 
@@ -27,7 +29,7 @@ const HomePage = () => {
 
             setPokemon(res);
             setFilteredPokemons(res);
-            setMaxPage(20);
+            setMaxPage(Math.ceil(response.data.count / 80));
             setTimeout(() => {
                 window.scrollTo({
                     top: 0,
@@ -61,6 +63,8 @@ const HomePage = () => {
                 <Form.Control type="text" placeholder="Catch one !" value={searchValue} onChange={handleChange}/>    
                 </div>
             </div>
+
+            <PaginationPoke/>
         
         <div className="d-flex justify-content-center flex-wrap gap-3 mt-3">
             {filteredPokemons.map((pokemon)=>
@@ -81,7 +85,7 @@ const HomePage = () => {
                     <Pagination.Item onClick={() => { setCurrentPage(1) }}>{1}</Pagination.Item>
                 </>}
 
-                {currentPage - 5 > 0 && <>
+                {currentPage - 5 > 1 && <>
                     <Pagination.Ellipsis onClick={() => { setCurrentPage(currentPage - 5) }} />
                 </>}
 

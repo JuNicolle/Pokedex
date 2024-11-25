@@ -371,6 +371,11 @@ a{
   text-transform: capitalize;
 }
 
+.dropdown-menu{
+  height: 200px;
+  overflow-y: auto;
+}
+
 #pokemonName{
   text-transform: capitalize;
   margin-top:1vh;
@@ -422,6 +427,10 @@ a{
   padding-left: 2vw;
   padding-top: 1vh;
   align-items: center;
+}
+
+button{
+  text-transform: uppercase;
 }
 
 button:hover{

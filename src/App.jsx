@@ -18,10 +18,10 @@ function App() {
       <NavBar/>
       <Routes>
         <Route path="/pokemon" element={<HomePage/>}/>
-        <Route path="/types" element={<Typepage/>}/>
+        <Route path="/type/" element={<Typepage/>}/>
         <Route path="/generations" element={<GenerationPage/>}/>
         <Route path="/pokemon/:id" element={<PokemonDetailPage/>}/>
-        
+        <Route path="/type/:type" element={<Typepage/>}/>
       </Routes>
       
       </BrowserRouter>

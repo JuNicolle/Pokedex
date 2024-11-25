@@ -16,8 +16,6 @@ const PokemonDetailPage = () => {
             const response = await PokemonService.getPokemonById(id);
             const res = response.data;
             const resbis = await PokemonService.getPokemonWeakness(res.types[0].type.name);
-            console.log(res);
-            console.log(resbis);
             setPokemon(res);
             setWeakness(resbis.data);
         } catch (error) {
@@ -29,7 +27,6 @@ const PokemonDetailPage = () => {
         try {
             const rasponse = await PokemonService.getPokemonDetails(id);
             const ras = rasponse.data;
-            console.log(ras);
             setDetails(ras);
         } catch (error) {
             console.log(error);
@@ -82,7 +79,7 @@ const PokemonDetailPage = () => {
                     <h4>Types :</h4>
                     <ul>
                         {pokemon.types && pokemon.types.map((type, index) => {
-                            return <button className={type.type.name}>{type.type.name}</button>
+                            return <button key={index} className={type.type.name}>{type.type.name}</button>
                         })}
                     </ul>
                 </div>
@@ -94,8 +91,8 @@ const PokemonDetailPage = () => {
                         {weakness.damage_relations?.double_damage_from && (
                             <p>
                              
-                                {weakness.damage_relations.double_damage_from.map((relation) => (
-                                    <button className={relation.name}>{relation.name}</button>
+                                {weakness.damage_relations.double_damage_from.map((relation, index) => (
+                                    <button key={index} className={relation.name}>{relation.name}</button>
                                 ))}
                             </p>
                         )}
