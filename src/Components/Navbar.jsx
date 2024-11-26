@@ -4,11 +4,15 @@ import { Navbar, Container, Nav, NavDropdown } from 'react-bootstrap';
 import PokeLogo from '../Assets/pngpokemon.png';
 import { useEffect, useState } from 'react';
 import TypeService from '../Services/TypeService';
+import GenerationService from '../Services/GenerationService';
 
 const NavBar = () => {
 
   const navigate = useNavigate();
   const [types, setTypes] = useState([]);
+  const [gen, setGen] = useState([]);
+  const [gameVersion, setGameVersion] = useState([]);
+  
 
   const fetchTypes = async () => {
     try{
@@ -24,8 +28,41 @@ const NavBar = () => {
     fetchTypes();
   },[])
 
+  const fetchGenerations = async () => {
+    try{
+      const response =  await GenerationService.GetAllGenerations();
+      setGen(response.data.results);
+    }
+    catch(error){
+      console.error(error);
+    }
+  }
+
+  useEffect(() => {
+    fetchGenerations()
+  },[])
+
+
+    const fetchGamesVersions = async () => {
+        try{
+          const response =  await GenerationService.GetAllGenerations();
+
+          setGameVersion(response.data);
+          console.log(response.data)
+        }
+        catch(error){
+          console.error(error);
+        }
+      }
+    
+      useEffect(() => {
+        fetchGamesVersions()
+      },[])
+
+
+
   return <>
-    <Navbar expand="lg" id="navbar" className='navBar'>
+    <Navbar expand="lg"  className='navBar'>
       <Container className='d-flex gap-3'>
         <Navbar.Brand href="#home">
           <img src={PokeLogo} alt="logo Pokemon" width="170vw" />
@@ -42,8 +79,14 @@ const NavBar = () => {
               )}
             </NavDropdown>
 
-            
-            <Link to={"/generations"} href="#action1">Générations</Link>
+            <NavDropdown title="Generations" id="basic-nav-dropdown">
+              {gen.map((gen, index)=>{
+                return <NavDropdown.Item key={gen.name + "nav"} onClick={()=>{navigate('/generation/'+ gen.name)}}>{gen.name}</NavDropdown.Item>
+              }
+              )}
+            </NavDropdown>
+            <Link to={"/generation/:gameversion"} href="#action1">Versions</Link>
+
 
           </Nav>
         </Navbar.Collapse>
