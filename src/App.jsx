@@ -23,7 +23,7 @@ function App() {
         <Route path="/generation/:gen" element={<GenerationPage/>}/>
         <Route path="/pokemon/:id" element={<PokemonDetailPage/>}/>
         <Route path="/type/:type" element={<Typepage/>}/>
-        <Route path="/generation/:gameversion" element={<GameVersionPage/>}/>
+        <Route path="/version/:version" element={<GameVersionPage/>}/>
       </Routes>
       
       </BrowserRouter>

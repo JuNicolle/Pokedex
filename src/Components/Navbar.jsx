@@ -5,13 +5,14 @@ import PokeLogo from '../Assets/pngpokemon.png';
 import { useEffect, useState } from 'react';
 import TypeService from '../Services/TypeService';
 import GenerationService from '../Services/GenerationService';
+import VersionService from '../Services/VersionService';
 
 const NavBar = () => {
 
   const navigate = useNavigate();
   const [types, setTypes] = useState([]);
   const [gen, setGen] = useState([]);
-  const [gameVersion, setGameVersion] = useState([]);
+  const [versions, setVersions] = useState([]);
   
 
   const fetchTypes = async () => {
@@ -45,10 +46,9 @@ const NavBar = () => {
 
     const fetchGamesVersions = async () => {
         try{
-          const response =  await GenerationService.GetAllGenerations();
+          const response =  await VersionService.GetAllVersions();
 
-          setGameVersion(response.data);
-          console.log(response.data)
+          setVersions(response.data.results);
         }
         catch(error){
           console.error(error);
@@ -85,7 +85,14 @@ const NavBar = () => {
               }
               )}
             </NavDropdown>
-            <Link to={"/generation/:gameversion"} href="#action1">Versions</Link>
+
+            <NavDropdown title="Versions" id="basic-nav-dropdown">
+              {versions.map((version, index)=>{
+                return <NavDropdown.Item key={version.name + "nav"} onClick={()=>{navigate('/version/'+ version.name)}}>{version.name}</NavDropdown.Item>
+              }
+              )}
+            </NavDropdown>
+            
 
 
           </Nav>

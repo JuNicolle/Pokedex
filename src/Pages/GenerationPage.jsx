@@ -36,7 +36,7 @@ const GenPage = () => {
                 <PokemonCard PokemonCard={gen}>{gen.name}</PokemonCard>
             ))}
         </div>
-    </Container>
+          </Container>
 }
 
 export default GenPage;

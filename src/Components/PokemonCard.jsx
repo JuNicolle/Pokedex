@@ -16,12 +16,12 @@ const PokemonCard = ({ PokemonCard }) => {
         <Card style={{ width: '18rem' }}>
           <Card.Img variant="top" src={"https://img.pokemondb.net/artwork/" + PokemonCard.name +".jpg"} />
           <Card.Body>
-            <Card.Title className="titlePoke">{PokemonCard.name} </Card.Title>
-            {/* N°{PokemonCard.url.replace("https://pokeapi.co/api/v2/pokemon/","").replace("/","")} */}
+            <Card.Title className="titlePoke">{PokemonCard.name} N°{PokemonCard.url.replace("https://pokeapi.co/api/v2/pokemon/","").replace("https://pokeapi.co/api/v2/pokemon-species/","").replace("/","")}</Card.Title>
+            
             <Card.Text>
               
             </Card.Text>
-            <Button variant="primary">Voir détails</Button>
+            <Button variant="primary">Show Details</Button>
           </Card.Body>
         </Card>
         </div>
